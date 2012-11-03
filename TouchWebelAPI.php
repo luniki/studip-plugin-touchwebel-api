@@ -40,12 +40,12 @@ class TouchWebelAPI extends StudipPlugin implements APIPlugin
         );
 
         $router->get('/courses/:course_id/wiki', function ($course_id) use ($router) {
-                $router->render(self::listWikiPagesForCourse($course_id));
+                $router->render(TouchWebelAPI::listWikiPagesForCourse($course_id));
             })
             ->conditions($conditions);
 
         $router->get('/courses/:course_id/wiki/:page', function ($course_id, $page) use ($router) {
-                $page = self::getWikiPageForCourse($course_id, $page);
+                $page = TouchWebelAPI::getWikiPageForCourse($course_id, $page);
                 if (empty($page)) {
                     $router->halt(204);
                     return;
